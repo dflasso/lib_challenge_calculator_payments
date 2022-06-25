@@ -153,4 +153,4 @@ Through github actions in each commit of the releases/** branches a tag is creat
 
 
 # Architecture
-See [class diagram]()
+See [class diagram](https://github.com/dflasso/lib_challenge_calculator_payments/blob/documentation/IOET_Solution-Class_Diagram.pdf)
