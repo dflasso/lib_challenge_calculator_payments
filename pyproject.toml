@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lib_test"
+version = "0.0.1"
+authors = [
+  { name="Dany Lasso", email="dannylasso.a@gmail.com" },
+]
+description = "Library to calculate payments to employees"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/dflasso/lib_challenge_calculator_payments"
+"Bug Tracker" = "https://github.com/dflasso/lib_challenge_calculator_payments/issues"
