@@ -24,7 +24,7 @@ class TestInboudAdapters(unittest.TestCase):
         
         file = open(input, 'r')
         result = from_txt(file=file)
-        print(result)
+        file.close()
         self.assertTrue( isinstance( result, List ) )
         self.assertTrue( len( result ) == 5 )
 
