@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Get current date
       id: date
-      run: echo "::set-output name=version::${{ github.event.head_commit.message }}"
+      run: echo "::set-output name=version::${{ github.event.pull_request.title }}"
     - name: Release snapshot
       id: release-snapshot
       uses: actions/create-release@latest
