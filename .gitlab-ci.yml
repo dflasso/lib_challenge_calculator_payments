@@ -7,6 +7,7 @@ cache:
   paths:
     - .cache/pip
     - venv/
+    - .env
 
 stages:
 - test
@@ -24,7 +25,7 @@ deploy package:
     - pip3 install -r requirements.txt
   script:
     - pip install twine
-    - python setup.py sdist bdist_wheel
+    - python3.9 setup.py sdist bdist_wheel
     - python3.9 -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*        
   only:
     - merge_requests
