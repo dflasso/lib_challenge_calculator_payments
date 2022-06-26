@@ -75,8 +75,8 @@ sast:
     paths: [gl-sast-report.json]
     reports:
       sast: gl-sast-report.json
-  only:
-    - merge_requests
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 code_quality:
   image: docker:19.03.11
