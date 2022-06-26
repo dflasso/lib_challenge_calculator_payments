@@ -76,11 +76,11 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
-    - cp .coverage.xml ./build/coverage.xml
+    - ls -la
     - sonar-scanner
   only:
     - 4-cpc-3-config-pipelines-for-ci-cd
-    - merge_requests
+    #- merge_requests
     - main
     - develop
   dependencies:
