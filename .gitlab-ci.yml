@@ -37,7 +37,8 @@ test coverage:
     - coverage report
     - coverage xml
   coverage: '/(?i)total.*? (100(?:\.0+)?\%|[1-9]?\d(?:\.\d+)?\%)$/'
-  artifacts:
+  artifacts:    
+    paths: [coverage.xml]
     reports:
       coverage_report:
         coverage_format: cobertura
