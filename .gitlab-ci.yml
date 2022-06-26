@@ -51,6 +51,7 @@ sast:
   variables:
     SAST_BANDIT_EXCLUDED_PATHS: '*/tests/*, */venv/*'
   artifacts:    
+    - main
     paths: [gl-sast-report.json]
     reports:
       sast: gl-sast-report.json
@@ -61,8 +62,12 @@ code_quality:
     paths: [gl-code-quality-report.html]
     reports:
       codequality: gl-code-quality-report.json
+  only:
+    - merge_requests
+    - main
 
 sonarcloud-check:
+  stage: test
   image:
     name: sonarsource/sonar-scanner-cli:4
     entrypoint: [""]
@@ -71,13 +76,15 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
+    - cp .coverage.xml ./build/coverage.xml
     - sonar-scanner
   only:
     - 4-cpc-3-config-pipelines-for-ci-cd
     - merge_requests
-    - master
+    - main
     - develop
-
+  dependencies:
+    - test coverage
 include:
 - template: Security/SAST.gitlab-ci.yml
 - template: Code-Quality.gitlab-ci.yml
