@@ -1,7 +1,7 @@
 import random
 import time
 import unittest
-
+import xmlrunner
 
 def unique_id(name):
     """
@@ -13,5 +13,7 @@ def unique_id(name):
     return f'{name}-{int(time.time())}-{random.randint(0, 10000)}'
 
 if __name__ == '__main__':
+    suite = unittest.main(testRunner=xmlrunner.XMLTestRunner(output='test-reports'))
     suite = unittest.TestLoader().discover('.', pattern = "test*.py")
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    

@@ -20,3 +20,12 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/dflasso/lib_challenge_calculator_payments"
 "Bug Tracker" = "https://github.com/dflasso/lib_challenge_calculator_payments/issues"
+
+[unittest]
+plugins = nose2.plugins.junitxml
+
+[junit-xml]
+always-on = False
+keep_restricted = False
+path = nose2-junit.xml
+test_fullname = False
