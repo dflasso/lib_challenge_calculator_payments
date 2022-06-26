@@ -16,9 +16,9 @@ stages:
 deploy package:
   stage: deploy
   image: python:3.9.13-slim-buster
-  variables: 
-    TWINE_PASSWORD: ${CI_JOB_TOKEN}
-    TWINE_USERNAME: ${GITLAB_USER_NAME}
+  # variables: 
+  #   TWINE_PASSWORD: ${CI_JOB_TOKEN}
+  #   TWINE_USERNAME: ${GITLAB_USER_NAME}
   before_script:
     - python3.9  -m venv .env
     - source .env/bin/activate
@@ -26,7 +26,7 @@ deploy package:
   script:
     - pip install wheel
     - python3.9 setup.py sdist bdist_wheel
-    - python3.9 -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*        
+    - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python3.9 -m twine upload --repository-url ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi dist/*        
   only:
     - merge_requests
   
