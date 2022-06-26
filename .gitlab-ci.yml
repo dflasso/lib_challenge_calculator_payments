@@ -36,6 +36,7 @@ sast:
 code_quality:
   image: docker:19.03.11
   artifacts:
+    paths: [gl-code-quality-report.html]
     reports:
       codequality: gl-code-quality-report.json
 
