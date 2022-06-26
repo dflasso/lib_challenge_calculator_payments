@@ -76,7 +76,6 @@ sonarcloud-check:
     paths:
       - .sonar/cache
   script:
-    - ls -la
     - sonar-scanner
   only:
     - 4-cpc-3-config-pipelines-for-ci-cd
