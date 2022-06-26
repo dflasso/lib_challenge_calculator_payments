@@ -27,9 +27,7 @@ unit test:
 sast:
   stage: test
   variables:
-    - SAST_BANDIT_EXCLUDED_PATHS: 
-      - '*/tests/*'
-      - '*/venv/*'
+    SAST_BANDIT_EXCLUDED_PATHS: '*/tests/*, */venv/*'
   artifacts:
     reports:
       sast: gl-sast-report.json
