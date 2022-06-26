@@ -9,7 +9,7 @@ cache:
 stages:
 - test
 
-pytest:
+unit test:
   stage: test
   image: python:3.9.13-slim-buster
   before_script:
@@ -26,6 +26,13 @@ pytest:
 
 sast:
   stage: test
+  variables:
+    - SAST_BANDIT_EXCLUDED_PATHS: 
+      - '*/tests/*'
+      - '*/venv/*'
+  artifacts:
+    reports:
+      sast: gl-sast-report.json
 
 
 include:
