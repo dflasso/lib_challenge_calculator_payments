@@ -2,7 +2,6 @@ import random
 import time
 import unittest
 
-
 def unique_id(name):
     """
     Generate a unique ID that includes the given name,
@@ -14,4 +13,5 @@ def unique_id(name):
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().discover('.', pattern = "test*.py")
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    
