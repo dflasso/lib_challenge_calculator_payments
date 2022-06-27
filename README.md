@@ -175,7 +175,6 @@ Help Desk
 
 - [Main Repository Lib Calculator of Payments](https://github.com/dflasso/lib_challenge_calculator_payments). According strategy git flow.
 - [Secondary Repository Lib Calculator of Payments](https://gitlab.com/calculator-payments-challenge/lib_pay_calculator). According strategy git Trunk-based
-- [Secondary Repository Demo Serveless Calculator of Payments](). According strategy git Trunk-based
 
 ## Build
 
@@ -232,13 +231,6 @@ $ coverage xml
         Installation by pip
         ```
         pip install lib-pay-calculator --extra-index-url https://__token__:<your_personal_token>@gitlab.com/api/v4/projects/37336179/packages/pypi/simple
-        ```
-
-- [Private Container Registry - Gitlab]()
-        
-        Pull Image
-        ```
-        
         ```
 
 
