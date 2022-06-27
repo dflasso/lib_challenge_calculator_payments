@@ -14,8 +14,20 @@ include:
 - template: Code-Quality.gitlab-ci.yml
 
 stages:
+- build
 - test
 - deploy
+
+compile:
+  stage: build
+  image: python:3.9.13-slim-buster
+  before_script:
+    - python3.9  -m venv .env
+    - source .env/bin/activate
+    - pip3 install -r requirements.txt
+  script:
+    - pip install wheel
+    - python3.9 setup.py sdist bdist_wheel
 
 unit test:
   stage: test

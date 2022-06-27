@@ -154,3 +154,91 @@ Through github actions in each commit of the releases/** branches a tag is creat
 
 # Architecture
 See [class diagram](https://github.com/dflasso/lib_challenge_calculator_payments/blob/documentation/IOET_Solution-Class_Diagram.pdf)
+
+
+# DevSecOps
+
+![cycle devops](https://static.wixstatic.com/media/96edd2_1a1fcd6de8304c549e6ec6afe91c68b7~mv2.png/v1/fit/w_600%2Ch_359%2Cal_c/file.png)
+
+## Plan
+
+Planning of the project was managed in Jira Software such as Released planning, User stories, assign responsible and tracking issues.
+- [Jira Software](https://smart-data-visio-espe.atlassian.net/jira/software/projects/CPC/boards/2/roadmap) 
+
+Chat of team, also notifications and alerts about solution.
+- [Slack](https://app.slack.com/client/T03M0Q3KZU6/C03M7B6RBMZ)
+
+Help Desk
+- [Email for Issues of Lib Calculator of Payments](mailto:contact-project+calculator-payments-challenge-lib-pay-calculator-37336179-issue-@incoming.gitlab.com)
+
+## Code
+
+- [Main Repository Lib Calculator of Payments](https://github.com/dflasso/lib_challenge_calculator_payments). According strategy git flow.
+- [Secondary Repository Lib Calculator of Payments](https://gitlab.com/calculator-payments-challenge/lib_pay_calculator). According strategy git Trunk-based
+- [Secondary Repository Demo Serveless Calculator of Payments](). According strategy git Trunk-based
+
+## Build
+
+- Gitlab CI/CD Pipelines
+```yml
+compile:
+  stage: build
+  image: python:3.9.13-slim-buster
+  before_script:
+    - python3.9  -m venv .env
+    - source .env/bin/activate
+    - pip3 install -r requirements.txt
+  script:
+    - pip install wheel
+    - python3.9 setup.py sdist bdist_wheel
+```
+
+## Test
+
+- Unit test.
+    + [pytest](https://docs.pytest.org/en/7.1.x/)
+    + [Unit testing framework](https://docs.python.org/3/library/unittest.html)
+    + [nose](https://nose.readthedocs.io/en/latest/)
+```bash
+$ nosetests -v --with-xunit --xunit-file=report.xml  
+```
+- Test Coverage 
+    + [pytest-cov](https://github.com/pytest-dev/pytest-cov)
+```bash
+$ pip install pytest pytest-cov
+$ coverage run -m pytest
+$ coverage report
+$ coverage xml
+```
+
+### Automatization Test
+- [Github Actions](https://github.com/dflasso/lib_challenge_calculator_payments/blob/main/.github/workflows/run-tests.yml)
+- [Gitlab CICD Pipelines]()
+
+## Security SAST -  Code Vulnerabilities
+- [Bandit](https://github.com/PyCQA/bandit).  Bandit is a tool designed to find common security issues in Python code. To do this Bandit processes each file, builds an AST from it, and runs appropriate plugins against the AST nodes. Once Bandit has finished scanning all the files it generates a report.
+
+- [Semgrep](https://semgrep.dev/) Static analysis at ludicrous speed Find bugs and enforce code standards
+
+- [Code Quality](https://docs.gitlab.com/ee/ci/testing/code_quality.html). To ensure your project’s code stays simple, readable, and easy to contribute.
+
+- [Sonarcloud](https://sonarcloud.io/)
+
+## Releases 
+- Tags and Releases in Github. [See github action pipelin](https://github.com/dflasso/lib_challenge_calculator_payments/blob/main/.github/workflows/releases.yml)
+
+- [Private Package Registry - Gitlab](https://gitlab.com/calculator-payments-challenge/lib_pay_calculator/-/packages/7648576)
+
+        Installation by pip
+        ```
+        pip install lib-pay-calculator --extra-index-url https://__token__:<your_personal_token>@gitlab.com/api/v4/projects/37336179/packages/pypi/simple
+        ```
+
+- [Private Container Registry - Gitlab]()
+        
+        Pull Image
+        ```
+        
+        ```
+
+
